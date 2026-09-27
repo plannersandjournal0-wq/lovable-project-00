@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
