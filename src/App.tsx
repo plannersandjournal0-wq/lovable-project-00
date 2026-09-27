@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
-  const [isRunning, setIsRunning] = useState(false);
-  const [inputMinutes, setInputMinutes] = useState(25);
+  const [timeLeft, setTimeLeft] = useState<number>(25 * 60);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [inputMinutes, setInputMinutes] = useState<number>(25);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
+    let interval: number | null = null;
 
     if (isRunning && timeLeft > 0) {
-      interval = setInterval(() => {
+      interval = window.setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timeLeft === 0) {
@@ -17,7 +17,7 @@ function App() {
     }
 
     return () => {
-      if (interval) clearInterval(interval);
+      if (interval) window.clearInterval(interval);
     };
   }, [isRunning, timeLeft]);
 
